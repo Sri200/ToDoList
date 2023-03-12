@@ -5,7 +5,9 @@ const app=express();
 app.set("view engine","ejs");
 app.use(bodyparse.urlencoded({extended:true}));
 app.use(express.static("public"));
-mongoose.connect("mongodb+srv://parasaramsriharsha:%23Gamerstag2002@cluster0.rlz3icj.mongodb.net/toDoListDB",{useNewUrlParser:true}).then(()=>{
+MONGO_URL="mongodb+srv://parasaramsriharsha:%23Gamerstag2002@cluster0.rlz3icj.mongodb.net/toDoListDB";
+ORIGIN="http://localhost:3000"
+mongoose.connect(MONGO_URL,{useNewUrlParser:true}).then(()=>{
     console.log("Connected to the Database. Yayzow!");
 })
 .catch(err => {
@@ -73,6 +75,6 @@ app.post("/delete",function(req,res){
     });
     res.redirect("/");
 });
-app.listen(process.env.PORT || 3000,function(){
+app.listen(process.env.ORIGIN || 3000,function(){
     console.log("Started listening");
 });
