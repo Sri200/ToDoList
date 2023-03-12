@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="css/styles.css">   
+    <title>ToDoList</title>
+</head>
+<body>
+    <div class="box" id="heading">
+    <h1> <%= wday %> </h1>
+    </div>
+    <div class="box">
+        <!-----<li><%= newListItem %></li>-->
+        <% newListItem.forEach(function(item){ %>
+            <form action="/delete" method="post">
+            <div class="item">
+                <input type="checkbox" name="checkbox" value="<%=item._id%>" onchange="this.form.submit()">
+                <p><%= item.name %></p>
+            </div>
+        </form>
+        <% }) %>
+        <!---<% for(var i=0;i<newListItem.length;i++){ %>
+            <div class="item">
+                <input type="checkbox">
+                <p><%= newListItem[i].name %></p>
+            </div>
+        <% } %> ---->
+    <form class="" action="/" method="post">
+        <input type="text" name="newItem" placeholder="what's the plan?">
+        <button type="submit" name="button">+</button>
+    </form>
+    </div>
+</body>
+</html>
